@@ -59,5 +59,19 @@ It runs on pushes to `main`/`master` and on pull requests:
 npm ci
 npm run test -w backend
 npm run test -w frontend
+npm run test:e2e
 npm run build
 ```
+
+## E2E Tests
+
+Playwright tests are in `tests/e2e`.
+
+Run locally:
+
+```bash
+npm run db:up
+npm run test:e2e
+```
+
+The e2e suite starts the backend and frontend automatically, then tests the todo flow in desktop and mobile Chromium.

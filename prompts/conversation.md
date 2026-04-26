@@ -49,3 +49,11 @@ Expanded the root `.gitignore` for the Node monorepo, including dependencies, bu
 ### Assistant Notes
 
 Added a GitHub Actions CI pipeline that installs dependencies with `npm ci`, tests backend and frontend workspaces, and builds the monorepo on push and pull request events.
+
+### User
+
+เพิ่ม e2e test ให้หน่อย ใช้ playwright
+
+### Assistant Notes
+
+Added Playwright end-to-end testing with desktop and mobile Chromium projects, covering create, complete, filter, and delete todo behavior against the real frontend and backend. Updated scripts and CI to install Playwright browsers and run e2e tests with a PostgreSQL service.

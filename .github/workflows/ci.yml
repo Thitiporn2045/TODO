@@ -18,6 +18,20 @@ jobs:
   test-and-build:
     name: Test and Build
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: todo
+          POSTGRES_PASSWORD: todo
+          POSTGRES_DB: todo_app
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U todo -d todo_app"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout
@@ -32,11 +46,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
       - name: Test backend
         run: npm run test -w backend
 
       - name: Test frontend
         run: npm run test -w frontend
+
+      - name: Test e2e
+        run: npm run test:e2e
+        env:
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: 5433
+          DATABASE_USER: todo
+          DATABASE_PASSWORD: todo
+          DATABASE_NAME: todo_app
 
       - name: Build backend and frontend
         run: npm run build

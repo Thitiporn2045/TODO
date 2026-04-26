@@ -11,10 +11,13 @@
     "dev:network": "concurrently \"npm run dev:network -w backend\" \"npm run dev:network -w frontend\"",
     "build": "npm run build -w backend && npm run build -w frontend",
     "test": "npm run test -w backend && npm run test -w frontend",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "db:up": "docker compose up -d db",
     "db:down": "docker compose down"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "concurrently": "^9.1.2"
   }
 }

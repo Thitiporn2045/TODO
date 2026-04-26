@@ -161,7 +161,7 @@ function TodoItem({
   onRemove: (id: string) => Promise<void>;
 }) {
   return (
-    <article className="rounded-lg border border-ink/10 bg-white p-3 shadow-sm">
+    <article data-testid="todo-item" className="rounded-lg border border-ink/10 bg-white p-3 shadow-sm">
       <div className="flex items-start gap-3">
         <button
           aria-label={todo.completed ? 'Mark incomplete' : 'Mark complete'}

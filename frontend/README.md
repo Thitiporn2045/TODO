@@ -100,6 +100,12 @@ npm run test -w frontend
 
 The current test checks that the main todo workspace renders and handles an empty list state.
 
+End-to-end tests live at the repository root in `tests/e2e` and run through Playwright:
+
+```bash
+npm run test:e2e
+```
+
 ## Build
 
 Run:
